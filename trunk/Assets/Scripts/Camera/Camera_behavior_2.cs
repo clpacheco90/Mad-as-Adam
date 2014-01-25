@@ -13,6 +13,9 @@ public class Camera_behavior_2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//this.transform = GameObject.Find ("Player").transform;
+		//ajustaCamera ();
 		
 		/*GameObject player = GameObject.Find("player");
 		
@@ -30,14 +33,27 @@ public class Camera_behavior_2 : MonoBehaviour {
 		}*/
 		
 	}
+
+	void FixedUpdate(){
+		ajustaCamera ();
+	}
 	
 	void Awake ()
 	{
-		
-		float vertical_size = camera.orthographicSize * 2.0f;
-		float horizontal_size = vertical_size * camera.aspect ;
-			transform.Translate(-horizontal_size/2,0,0);
+		ajustaCamera ();
 
 		
 	}
+
+	void ajustaCamera(){
+		Camera cam2 = GameObject.Find ("cam2").camera;
+		Vector3 novo = new Vector3 (GameObject.Find("Player").transform.position.x, -3, -10);
+		transform.position = novo;
+		float vertical_size = cam2.orthographicSize;
+		float horizontal_size = vertical_size * cam2.aspect ;
+		transform.Translate(-horizontal_size,0,0);
+		
+	}
+
+
 }
