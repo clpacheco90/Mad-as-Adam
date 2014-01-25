@@ -137,6 +137,13 @@ public static class CharacterMovement{
         movement.speed    = Mathf.Lerp(movement.speed, targetSpeed, curSmooth);
     }
     //-----------------------------------------------------------------------------------------------------------------------------//	
+    //public static void ApplySquatDown(ControllerMovement movement, ControllerJumping jump, CharacterController controller) {
+    //    if (!movement.enabled) return;
+    //    var v = Input.GetAxisRaw("Vertical");
+    //    movement.isSquatDown = Mathf.Abs(v) > 0.1f;
+    //    Debug.Log(v);
+    //}
+    //-----------------------------------------------------------------------------------------------------------------------------//	
 	public static void ApplyGravity (ControllerMovement movement,ControllerJumping jump, CharacterController controller) {
 		var jumpButton = Input.GetButton("Jump");		
 		
@@ -318,7 +325,7 @@ public static class CharacterMovement{
         }
         if (!jumpButton) {
             c.Jump.buttonReleased = true;
-            Debug.Log("Release");
+            //Debug.Log("Release");
         }
 
         var extraPowerJump = c.Jump.jumping && c.Movement.verticalSpeed > 0.0f && jumpButton && !c.Jump.buttonReleased && c.Movement.transform.position.y < c.Jump.lastStartHeight + c.Jump.extraHeight && !c.Jump.touchedCeiling;
@@ -329,7 +336,7 @@ public static class CharacterMovement{
         } else if (c.isGrounded) {
             c.Movement.verticalSpeed = -c.Movement.gravity * Time.smoothDeltaTime;
         } else {
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
             c.Movement.verticalSpeed -= c.Movement.gravity * Time.smoothDeltaTime;
         }
 
@@ -365,16 +372,16 @@ public static class CharacterMovement{
                 // If we're on a platform, add the platform's velocity (times 1.4)
                 // to the character's velocity. We only do this if the platform
                 // is traveling upward.
-                if (c.Movement.activePlatform) {
-                    var apRb = c.Movement.activePlatform.rigidbody;
-                    if (apRb) {
-                        var apRbY = c.Movement.activePlatform.rigidbody.velocity.y;
-                        if (apRbY > 0.0f) {
-                            apRbY *= 1.4f;
-                            c.Movement.verticalSpeed += apRbY;
-                        }
-                    }
-                }
+                //if (c.Movement.activePlatform) {
+                //    var apRb = c.Movement.activePlatform.rigidbody;
+                //    if (apRb) {
+                //        var apRbY = c.Movement.activePlatform.rigidbody.velocity.y;
+                //        if (apRbY > 0.0f) {
+                //            apRbY *= 1.4f;
+                //            c.Movement.verticalSpeed += apRbY;
+                //        }
+                //    }
+                //}
                 DidJump(c.Movement, c.Jump);
             }
         }

@@ -11,6 +11,7 @@ public class CharacterController2D {
     public bool isGrounded;
     [HideInInspector]public Transform GroundCheck;
     [HideInInspector]public GameObject PlayerObject;
+    private bool isGroundedFixPos;
     //-----------------------------------------------------------------------------------------------------------------------------//
     public void StartControllers(GameObject playerObject){
         this.PlayerObject       = playerObject;
@@ -21,7 +22,7 @@ public class CharacterController2D {
     //-----------------------------------------------------------------------------------------------------------------------------//
     public void UpdateControllers() {
         this.GroundCheck = this.PlayerObject.transform.FindChild("groundCheck");
-        //this.isGrounded  = Physics2D.Linecast(this.PlayerObject.transform.position, this.GroundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        this.isGrounded  = Physics2D.Linecast(this.PlayerObject.transform.position, this.GroundCheck.position, 1 << LayerMask.NameToLayer("Ground"));        
     }
     //-----------------------------------------------------------------------------------------------------------------------------//
     public void Move(Vector3 pos) {
