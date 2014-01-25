@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour {
         //_controllers += CharacterMovement.GravityMovementY;
         _controllers += CharacterMovement.ApplyGravity;
         _controllers += CharacterMovement.ApplyJumping;
-		_controllers += CharacterMovement.RefreshMovement;
+        _controllers += CharacterMovement.RefreshMovement;
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Update () {
+        if (_character2D.Movement.direction.sqrMagnitude > 0.01) _controllers += CharacterMovement.ApplyRotation;
+        else _controllers -= CharacterMovement.ApplyRotation;
+            //CharacterMovement.ApplyRotation(ref _character2D.Movement, ref _quaternionY, _attributes.canControl);
         //NGUIDebug.Log(_controllerMovement.direction.ToString());        
         //float v;
         //CharacterMovement.IsMovingVertical(out v, true);
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour {
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void FixedUpdate(){
         //_controllers(_character2D.Movement, _character2D.Jump, _character2D.Controller);
+        
         _controllers(_character2D);
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
