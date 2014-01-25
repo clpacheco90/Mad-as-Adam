@@ -14,20 +14,20 @@ public class Camera_behavior_1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		GameObject player = GameObject.Find("player");
+		//GameObject player = GameObject.Find("player");
 		
-		if (movement.Instance.facing_right)
-		{
+		//if (movement.Instance.facing_right)
+		//
 		
-			camera.cullingMask = -257;
+		//	camera.cullingMask = -257;
 			
-		}
-		else
-		{
+		//}
+		//else
+		//{
 		
-			camera.cullingMask = -513;
+		//	camera.cullingMask = -513;
 			
-		}	
+		//}	
 				
 		
 	}

@@ -14,7 +14,7 @@ public class Camera_behavior_2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		GameObject player = GameObject.Find("player");
+		/*GameObject player = GameObject.Find("player");
 		
 		if (!movement.Instance.facing_right)
 		{
@@ -27,7 +27,7 @@ public class Camera_behavior_2 : MonoBehaviour {
 		
 			camera.cullingMask = -513;
 			
-		}
+		}*/
 		
 	}
 	
