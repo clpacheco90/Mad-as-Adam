@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     //delegate void Controllers(ControllerMovement m, ControllerJumping j, CharacterController c);
     delegate void Controllers(CharacterController2D c);
 	private Controllers _controllers;
+
+	public bool isCrounch = false;
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Awake () {
         _character2D.StartControllers(this.gameObject);
