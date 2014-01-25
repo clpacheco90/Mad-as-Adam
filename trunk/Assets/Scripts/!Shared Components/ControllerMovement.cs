@@ -17,6 +17,7 @@ public class ControllerMovement {
 	[System.NonSerializedAttribute] public float verticalSpeed = 0.0f; // The current vertical speed
     [System.NonSerializedAttribute] public float speed         = 0.0f;	// The current movement speed.  This gets smoothed by speedSmoothing.
 	[System.NonSerializedAttribute] public bool isMoving       = false;    // Is the user pressing the left or right movement keys?
+    [System.NonSerializedAttribute] public bool isSquatDown    = false;
     [System.NonSerializedAttribute] public bool isClimbing     = false;	    // Is the user pressing the up or down movement keys?
 	[System.NonSerializedAttribute] public CollisionFlags collisionFlags; // The last collision flags returned from controller.Move
 	[System.NonSerializedAttribute] public Vector3 velocity; // We will keep track of an approximation of the character's current velocity, so that we return it from GetVelocity () for our camera to use for prediction.

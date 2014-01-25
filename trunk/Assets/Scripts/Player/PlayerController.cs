@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	void Awake () {
         _character2D.StartControllers(this.gameObject);
         _controllers += CharacterMovement.GravityMovementX;
+        //_controllers += CharacterMovement.GravityMovementY;
         _controllers += CharacterMovement.ApplyGravity;
         _controllers += CharacterMovement.ApplyJumping;
 		_controllers += CharacterMovement.RefreshMovement;
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour {
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Update () {
         //NGUIDebug.Log(_controllerMovement.direction.ToString());        
+        //float v;
+        //CharacterMovement.IsMovingVertical(out v, true);
+        //Debug.Log(v);
         _character2D.UpdateControllers();		
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
