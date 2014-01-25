@@ -137,12 +137,12 @@ public static class CharacterMovement{
         movement.speed    = Mathf.Lerp(movement.speed, targetSpeed, curSmooth);
     }
     //-----------------------------------------------------------------------------------------------------------------------------//	
-    //public static void ApplySquatDown(ControllerMovement movement, ControllerJumping jump, CharacterController controller) {
-    //    if (!movement.enabled) return;
-    //    var v = Input.GetAxisRaw("Vertical");
-    //    movement.isSquatDown = Mathf.Abs(v) > 0.1f;
-    //    Debug.Log(v);
-    //}
+    public static void ApplySquatDown(ControllerMovement movement, ControllerJumping jump, CharacterController controller) {
+        //if (!movement.enabled) return;
+        //var v = Input.GetAxisRaw("Vertical");
+        //movement.isSquatDown = v < -0.1f;
+        //Debug.Log(v);
+    }
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	public static void ApplyGravity (ControllerMovement movement,ControllerJumping jump, CharacterController controller) {
 		var jumpButton = Input.GetButton("Jump");		
@@ -393,25 +393,32 @@ public static class CharacterMovement{
         if (!c.Movement.canRotation) return;
         //if (!canControl) return;
         //if (!movement.canRotation) return;
-        var quaternionY = 0;
+        float quaternionY;
         var h = Input.GetAxisRaw("Horizontal");
         var v = Input.GetAxisRaw("Vertical");
         if (Mathf.Abs(v) > 0.1f) return;
+        if (c.Movement.direction == Vector3.zero) return;
         if (h > 0.1f) {
             quaternionY = -90;
         } else if (h < -0.1f) {
             quaternionY = -90;
-        } else if (h == 0) {
+        } else {
             quaternionY = 270;
         }
         var lr = Quaternion.Euler(0, quaternionY, 0) * Quaternion.LookRotation(c.Movement.direction);
-        //Debug.Log(movement.direction);
-        c.Movement.transform.rotation = Quaternion.Slerp(c.Movement.transform.rotation, lr, Time.smoothDeltaTime * c.Movement.rotationSmoothing);
-        
+        //Debug.Log(lr);
+        c.Movement.transform.rotation = Quaternion.Slerp(c.Movement.transform.rotation, lr, Time.fixedDeltaTime * c.Movement.rotationSmoothing);
+        //Debug.Log(c.Movement.transform.rotation);
     //movement.transform.rotation = new Quaternion(0, movement.transform.rotation.y, 0, movement.transform.rotation.w);        
         //NGUIDebug.Log(movement.transform.rotation.ToString());
     }
     //-----------------------------------------------------------------------------------------------------------------------------//
+    public static void ApplySquatDown(CharacterController2D c) {
+        if (!c.Movement.enabled) return;
+        var v = Input.GetAxisRaw("Vertical");
+        c.Movement.isSquatDown = v < -0.1f;
+        //Debug.Log(v + " : " + c.Movement.isSquatDown);
+    }
 }
 #region 2DController
 //public static void GravityMovementX(CharacterController2D c) {
