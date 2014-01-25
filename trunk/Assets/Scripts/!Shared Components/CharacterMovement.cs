@@ -406,11 +406,7 @@ public static class CharacterMovement{
             quaternionY = 270;
         }
         var lr = Quaternion.Euler(0, quaternionY, 0) * Quaternion.LookRotation(c.Movement.direction);
-        //Debug.Log(lr);
         c.Movement.transform.rotation = Quaternion.Slerp(c.Movement.transform.rotation, lr, Time.fixedDeltaTime * c.Movement.rotationSmoothing);
-        //Debug.Log(c.Movement.transform.rotation);
-    //movement.transform.rotation = new Quaternion(0, movement.transform.rotation.y, 0, movement.transform.rotation.w);        
-        //NGUIDebug.Log(movement.transform.rotation.ToString());
     }
     //-----------------------------------------------------------------------------------------------------------------------------//
     public static void ApplySquatDown(CharacterController2D c) {
