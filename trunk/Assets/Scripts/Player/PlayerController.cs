@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour {
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Update () {
+
+		//if(Input.GetAxis())
+
+	
         if (_character2D.Movement.direction.sqrMagnitude > 0.01) _controllers += CharacterMovement.ApplyRotation;
         else _controllers -= CharacterMovement.ApplyRotation;
             //CharacterMovement.ApplyRotation(ref _character2D.Movement, ref _quaternionY, _attributes.canControl);
