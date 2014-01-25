@@ -215,10 +215,11 @@ public static class CharacterMovement{
         }
     }
     //-----------------------------------------------------------------------------------------------------------------------------//	
-    public static void ApplyRotation(ref ControllerMovement movement, ref float quaternionY, bool canControl) {
-        if (!canControl) return;
+    public static void ApplyRotation(ControllerMovement movement, ControllerJumping jump, CharacterController controller) {
+        if (!movement.enabled) return;
+        //if (!canControl) return;
         //if (!movement.canRotation) return;
-
+        var quaternionY = 0;
         var h = Input.GetAxisRaw("Horizontal");
         var v = Input.GetAxisRaw("Vertical");
         if (Mathf.Abs(v) > 0.1f) return;
@@ -385,6 +386,30 @@ public static class CharacterMovement{
                 DidJump(c.Movement, c.Jump);
             }
         }
+    }
+    //-----------------------------------------------------------------------------------------------------------------------------//
+    public static void ApplyRotation(CharacterController2D c) {
+        if (!c.Movement.enabled) return;
+        if (!c.Movement.canRotation) return;
+        //if (!canControl) return;
+        //if (!movement.canRotation) return;
+        var quaternionY = 0;
+        var h = Input.GetAxisRaw("Horizontal");
+        var v = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(v) > 0.1f) return;
+        if (h > 0.1f) {
+            quaternionY = -90;
+        } else if (h < -0.1f) {
+            quaternionY = -90;
+        } else if (h == 0) {
+            quaternionY = 270;
+        }
+        var lr = Quaternion.Euler(0, quaternionY, 0) * Quaternion.LookRotation(c.Movement.direction);
+        //Debug.Log(movement.direction);
+        c.Movement.transform.rotation = Quaternion.Slerp(c.Movement.transform.rotation, lr, Time.smoothDeltaTime * c.Movement.rotationSmoothing);
+        
+    //movement.transform.rotation = new Quaternion(0, movement.transform.rotation.y, 0, movement.transform.rotation.w);        
+        //NGUIDebug.Log(movement.transform.rotation.ToString());
     }
     //-----------------------------------------------------------------------------------------------------------------------------//
 }
