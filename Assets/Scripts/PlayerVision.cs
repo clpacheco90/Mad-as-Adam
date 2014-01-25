@@ -23,5 +23,5 @@ public class PlayerVision : MonoBehaviour {
 		if(other.gameObject.tag.Equals("Enemy")){
 			other.gameObject.GetComponent<EnemyRenderer>().setDomain(Domain.Real);
 		}
-	}
+	} 
 }
