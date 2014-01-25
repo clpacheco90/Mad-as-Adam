@@ -5,7 +5,7 @@ using System.Collections.Generic; // pra poder usar Lista<>
 public class CameraChangeScript : MonoBehaviour {
 
 	// List of game objects
-	private List<GameObject> gos; 
+	private GameObject gos; 
 	public GameObject poof; // Particle system
 	private bool poofAtRightCam = true;
 
@@ -18,31 +18,7 @@ public class CameraChangeScript : MonoBehaviour {
 		GameObject.Find ("cam1").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Real"));
 		GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Enemy")));
 	
-		// INITIAL POOF when the stage begins
-		if(poofAtRightCam == true)
-		{
-			poofAtRightCam = false;
-			
-			//Extension method, to help find in the scene all game objects with a specific layer
-			gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
-			// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
-			foreach (GameObject go in gos)
-			{
-				Instantiate(poof, go.transform.position, go.transform.rotation);
-			}
-		}
-		else if(poofAtRightCam == false)
-		{
-			poofAtRightCam = true;
-			
-			//Extension method, to help find in the scene all game objects with a specific layer
-			gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
-			// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
-			foreach (GameObject go in gos)
-			{
-				Instantiate(poof, go.transform.position, go.transform.rotation);
-			}
-		}
+
 	}
 	
 	// Update is called once per frame
@@ -62,12 +38,16 @@ public class CameraChangeScript : MonoBehaviour {
 				poofAtRightCam = false;
 
 				//Extension method, to help find in the scene all game objects with a specific layer
-				gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+				//gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+				gos = GameObject.Find ("imaginario");
+
 				// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
-				foreach (GameObject go in gos)
-				{
-					Instantiate(poof, go.transform.position, go.transform.rotation);
-				}
+
+				//Instantiate(poof, gos.transform.position, gos.transform.rotation);
+//				foreach (GameObject go in gos)
+//				{
+//					Instantiate(poof, go.transform.position, go.transform.rotation  );
+//				}
 			}
 
 		}
@@ -84,12 +64,13 @@ public class CameraChangeScript : MonoBehaviour {
 				poofAtRightCam = true;
 
 				//Extension method, to help find in the scene all game objects with a specific layer
-				gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
-				// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
-				foreach (GameObject go in gos)
-				{
-					Instantiate(poof, go.transform.position, go.transform.rotation);
-				}
+//				gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+//				//gos = GameObject.Find("enemy");
+//				// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
+//				foreach (GameObject go in gos)
+//				{
+//					Instantiate(poof, go.transform.position, go.transform.rotation);
+//				}							
 			}
 
 		}
