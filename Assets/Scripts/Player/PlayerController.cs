@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Update () {		
-        if(CharacterMovement.IsMoving()) _controllers += CharacterMovement.ApplyRotation;
+        if(CharacterMovement.IsMoving()) CharacterMovement.ApplyRotation(_character2D);
         _character2D.UpdateControllers();		
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
