@@ -17,7 +17,7 @@ public class desconfiadoCollision : MonoBehaviour {
 		//dar um nome melhor ao objeto que possui esse collider
 		if(other.gameObject.name.Equals("sprite")){
 
-			enfermeiroScript.triggerDesconfiada = true;
+			transform.parent.gameObject.GetComponent<enfermeiroScript>().triggerDesconfiada = true;
 		}
 
 	}
@@ -25,7 +25,7 @@ public class desconfiadoCollision : MonoBehaviour {
 	public void OnTriggerExit2D(Collider2D other){
 		//dar um nome melhor ao objeto que possui esse collider
 		if(other.gameObject.name.Equals("sprite")){
-			enfermeiroScript.triggerDesconfiada = false;
+			transform.parent.gameObject.GetComponent<enfermeiroScript>().triggerDesconfiada = false;
 		}
 	}
 }

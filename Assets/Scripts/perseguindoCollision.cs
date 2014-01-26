@@ -16,14 +16,14 @@ public class perseguindoCollision : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other){
 		//dar um nome melhor ao objeto que possui esse collider
 		if(other.gameObject.name.Equals("sprite")){
-			enfermeiroScript.triggerFollow = true;
+			transform.parent.gameObject.GetComponent<enfermeiroScript>().triggerFollow = true;
 		}
 	}
 	
 	public void OnTriggerExit2D(Collider2D other){
 		//dar um nome melhor ao objeto que possui esse collider
 		if(other.gameObject.name.Equals("sprite")){
-			enfermeiroScript.triggerFollow = false;
+			transform.parent.gameObject.GetComponent<enfermeiroScript>().triggerFollow = false;
 		}
 	}
 }

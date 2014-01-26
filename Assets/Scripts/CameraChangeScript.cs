@@ -14,10 +14,10 @@ public class CameraChangeScript : MonoBehaviour {
 	void Start () {
 
 		//Initializes the camera culling mask to the right, by default (before the player starts moving)
-		GameObject.Find ("cam2").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Enemy"));
+		GameObject.Find ("cam2").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Imaginario"));
 		GameObject.Find ("cam2").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Real")));
 		GameObject.Find ("cam1").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Real"));
-		GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Enemy")));
+		GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Imaginario")));
 	
 
 		// INITIAL POOF when the level starts
@@ -26,7 +26,7 @@ public class CameraChangeScript : MonoBehaviour {
 			poofAtRightCam = false;
 			
 			//Extension method, to help find in the scene all game objects with a specific layer
-			gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+			gos = gameObject.FindGameObjectsWithLayer(11); // 8 = layer "Enemy"
 			//gos = GameObject.Find ("imaginario");
 			
 			// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
@@ -40,7 +40,7 @@ public class CameraChangeScript : MonoBehaviour {
 			poofAtRightCam = true;
 			
 			//Extension method, to help find in the scene all game objects with a specific layer
-			gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+			gos = gameObject.FindGameObjectsWithLayer(11); // 8 = layer "Enemy"
 			//gos = GameObject.Find("enemy");
 			
 			// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
@@ -59,10 +59,10 @@ public class CameraChangeScript : MonoBehaviour {
 		if (Input.GetAxis ("Horizontal") > 0) 
 		{
 			//Changes the camera culling mask
-			GameObject.Find ("cam2").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Enemy"));
+			GameObject.Find ("cam2").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Imaginario"));
 			GameObject.Find ("cam2").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Real")));
 			GameObject.Find ("cam1").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Real"));
-			GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Enemy")));
+			GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Imaginario")));
 		
 
 			if(poofAtRightCam == true /*&& dontPoof == false*/)
@@ -70,7 +70,7 @@ public class CameraChangeScript : MonoBehaviour {
 				poofAtRightCam = false;
 
 				//Extension method, to help find in the scene all game objects with a specific layer
-				gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+				gos = gameObject.FindGameObjectsWithLayer(11); // 8 = layer "Enemy"
 				//gos = GameObject.Find ("imaginario");
 
 				// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen
@@ -88,8 +88,8 @@ public class CameraChangeScript : MonoBehaviour {
 		
 			//Changes the camera culling mask
 			GameObject.Find ("cam2").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Real"));
-			GameObject.Find ("cam2").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Enemy")));	
-			GameObject.Find ("cam1").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Enemy"));
+			GameObject.Find ("cam2").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Imaginario")));	
+			GameObject.Find ("cam1").camera.cullingMask |= 1 << (LayerMask.NameToLayer("Imaginario"));
 			GameObject.Find ("cam1").camera.cullingMask &=~(1 << (LayerMask.NameToLayer("Real")));		
 
 			if(poofAtRightCam == false /*&& dontPoof == false*/)
@@ -97,7 +97,7 @@ public class CameraChangeScript : MonoBehaviour {
 				poofAtRightCam = true;
 
 				//Extension method, to help find in the scene all game objects with a specific layer
-				gos = gameObject.FindGameObjectsWithLayer(8); // 8 = layer "Enemy"
+				gos = gameObject.FindGameObjectsWithLayer(11); // 8 = layer "Enemy"
 				//gos = GameObject.Find("enemy");
 
 				// Instantiate the "poof" particle system in the position of all enemies, when they appear on the screen

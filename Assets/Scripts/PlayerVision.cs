@@ -10,18 +10,23 @@ public class PlayerVision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.gameObject.tag.Equals("Enemy")){
-			other.gameObject.GetComponent<EnemyRenderer>().setDomain(Domain.Imaginary);
-		}
+			if(other.gameObject.tag.Equals("Fantasma")){
+				other.enabled = true;
+			}
+//		if(other.gameObject.tag.Equals("Arvore")){
+//			other.gameObject.GetComponent<ArvoreBehaviour>().isReal = false;
+//		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other.gameObject.tag.Equals("Enemy")){
-			other.gameObject.GetComponent<EnemyRenderer>().setDomain(Domain.Real);
-		}
+			if(other.gameObject.tag.Equals("Fantasma")){
+				other.enabled = false;
+			}
+//		if(other.gameObject.tag.Equals("Arvore")){
+//			other.gameObject.GetComponent<ArvoreBehaviour>().isReal = true;
+//		}
 	} 
 }
