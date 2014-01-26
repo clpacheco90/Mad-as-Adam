@@ -19,20 +19,41 @@ public class PlayerAnimations : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		// Sets the speed parameter (for Animator) based on the current axis pressed
-		anim.SetFloat("speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
 
-		// If the character is not grounded AND is jumping
-		if (player._character2D.isGrounded == false && player._character2D.Jump.jumping)
+
+		if (player._character2D.Movement.isDead)
 		{
-			anim.SetBool("jumping", true);
-			//Debug.Log ("test1");
+
+			anim.SetBool("dead", true);
+
 		}
-		// If the player is grounded
-		else if(player._character2D.isGrounded == true)
+		else
 		{
-			anim.SetBool("jumping", false);
-			//Debug.Log ("test2");
+
+			// Sets the speed parameter (for Animator) based on the current axis pressed
+			anim.SetFloat("speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+			Debug.Log(Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+
+			// If the character is not grounded AND is jumping
+			if (player._character2D.isGrounded == false && player._character2D.Jump.jumping)
+			{
+				anim.SetBool("jumping", true);
+				//Debug.Log ("test1");
+			}
+			// If the player is grounded
+			else if(player._character2D.isGrounded == true)
+			{
+				anim.SetBool("jumping", false);
+				//Debug.Log ("test2");
+
+				if (player._character2D.Movement.speed == 0)
+				{
+
+					anim.SetBool("stopped", false);
+					//Debug.Log ("test2");
+
+				}
+			}
 		}
 	}
 }

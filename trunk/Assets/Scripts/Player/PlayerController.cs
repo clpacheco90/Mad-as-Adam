@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour {
     delegate void Controllers(CharacterController2D c);
 	private Controllers _controllers;
 
-    //!Erase later
-    public bool isCrounch;
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Awake () {
         _character2D.StartControllers(this.gameObject);
@@ -23,12 +21,15 @@ public class PlayerController : MonoBehaviour {
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void Update () {		
         if(CharacterMovement.IsMoving()) CharacterMovement.ApplyRotation(_character2D);
-        _character2D.UpdateControllers();		
+        _character2D.UpdateControllers();	
+
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
 	void FixedUpdate(){
         _controllers(_character2D);
 	}
     //-----------------------------------------------------------------------------------------------------------------------------//	
+
+		
 
 }
