@@ -32,7 +32,7 @@ public class PlayerAnimations : MonoBehaviour
 
 			// Sets the speed parameter (for Animator) based on the current axis pressed
 			anim.SetFloat("speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-			Debug.Log(Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+			//Debug.Log(Mathf.Abs(Input.GetAxisRaw("Horizontal")));
 
 			// If the character is not grounded AND is jumping
 			if (player._character2D.isGrounded == false && player._character2D.Jump.jumping)

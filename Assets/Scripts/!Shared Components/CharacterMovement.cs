@@ -47,7 +47,7 @@ public static class CharacterMovement{
 		jump.reachedApex 		= false;
 		jump.lastTime 			= Time.time;
 		jump.lastStartHeight 	= movement.transform.position.y;
-		jump.lastButtonTime 	= -10;
+		jump.lastButtonTime 	= 0;
 		jump.touchedCeiling 	= false;
 		jump.buttonReleased 	= false;
 	}
@@ -332,13 +332,11 @@ public static class CharacterMovement{
         var extraPowerJump = c.Jump.jumping && c.Movement.verticalSpeed > 0.0f && jumpButton && !c.Jump.buttonReleased && c.Movement.transform.position.y < c.Jump.lastStartHeight + c.Jump.extraHeight && !c.Jump.touchedCeiling;
 
         if (extraPowerJump) {
-            Debug.Log("extraJump");
             return;
         } else if (c.isGrounded) {
-            c.Movement.verticalSpeed = -c.Movement.gravity * Time.smoothDeltaTime;
+            c.Movement.verticalSpeed = -c.Movement.gravity * Time.fixedDeltaTime;
         } else {
-            //Debug.Log("Jump");
-            c.Movement.verticalSpeed -= c.Movement.gravity * Time.smoothDeltaTime;
+            c.Movement.verticalSpeed -= c.Movement.gravity * Time.fixedDeltaTime;
         }
 
         // Make sure we don't fall any faster than maxFallSpeed.  This gives our character a terminal velocity.
