@@ -52,7 +52,7 @@ public class AutoFade : MonoBehaviour {
         }
         if (_levelName != ""){
             if (asyncLevel) _async = (AsyncOperation)Application.LoadLevelAsync(_levelName);
-            else Application.LoadLevel(_levelName); //! CHANGE
+            else Application.LoadLevel(_levelName);
         }
         else{
             if (asyncLevel) _async = (AsyncOperation)Application.LoadLevelAsync(_levelIndex);

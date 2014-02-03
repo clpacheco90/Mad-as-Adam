@@ -6,16 +6,19 @@ public class enfermeiroScript : MonoBehaviour {
 
 	Animator anim_1;
 	Animator anim_2;
+    public string lvl1 = "Game 1";
 	public float areaRondaTam;
 	public Vector2 posInicial;
 	public float maxSpeed = 10.0f;
-	public Vector2 direcao = new Vector2 (1,0); 
+	public Vector2 direcao = new Vector2 (1,0);
+    public float timePursuit = 1;
 	private States state;
 	public bool triggerDesconfiada = false;
 	public bool triggerFollow = false;
 	float _chasingCount = 0;
 	private bool _isturning = false;
 	public bool red_type = false;
+	public AudioClip musicaTensa;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +48,7 @@ public class enfermeiroScript : MonoBehaviour {
 
 
 
-		Debug.Log(red_type);
+		//Debug.Log(red_type);
 
 
 		anim_1.SetFloat("speed", Mathf.Abs(rigidbody2D.velocity.x )); 
@@ -77,6 +80,8 @@ public class enfermeiroScript : MonoBehaviour {
 
 				anim_1.SetTrigger("alert");
 				anim_2.SetTrigger("alert");
+				audio.Play();
+				tocarMusicaTensa();
 
 
 
@@ -109,7 +114,8 @@ public class enfermeiroScript : MonoBehaviour {
 					anim_1.SetTrigger("alert");
 					anim_2.SetTrigger("alert");
 					
-
+					audio.Play();
+					tocarMusicaTensa();
 
 
 				}else{
@@ -133,7 +139,7 @@ public class enfermeiroScript : MonoBehaviour {
 				if(triggerFollow){
 					_chasingCount = 0;
 				}
-				if(_chasingCount>=1){
+				if(_chasingCount>=timePursuit){
 					_chasingCount = 0;
 					direcao = -direcao;
 					transform.Rotate(0,180,0);
@@ -186,8 +192,17 @@ public class enfermeiroScript : MonoBehaviour {
 		
 		
 		
-		
-		
+	}
+
+	void tocarMusicaTensa(){
+        if(Application.loadedLevelName.Equals(lvl1)){
+            if (!GameObject.Find("Music").audio.name.Equals("lvl1_run_v2")) {
+                GameObject.Find("Music").audio.clip = musicaTensa;
+                GameObject.Find("Music").audio.Play();
+
+            }
+        }
+        
 	}
 
 

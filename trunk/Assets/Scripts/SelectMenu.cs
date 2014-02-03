@@ -36,14 +36,14 @@ public class SelectMenu : MonoBehaviour {
         
         switch (main) {
             case MainMenu.Play:
-                GameObject.Find("AutoFade").GetComponent<LoadLevel>()._autoFadeConfig.nextScene = scenePlay;
+                GameObject.Find("AutoFadeLoad").GetComponent<LoadLevel>()._autoFadeConfig.nextScene = scenePlay;
                 if ((!Input.GetButtonDown("Jump"))) return;
-                GameObject.Find("AutoFade").GetComponent<LoadLevel>().enabled = true;
+                GameObject.Find("AutoFadeLoad").GetComponent<LoadLevel>().enabled = true;
                 break;
             case MainMenu.Credits:
-                GameObject.Find("AutoFade").GetComponent<LoadLevel>()._autoFadeConfig.nextScene = sceneCredits;
+                GameObject.Find("AutoFadeLoad").GetComponent<LoadLevel>()._autoFadeConfig.nextScene = sceneCredits;
                 if ((!Input.GetButtonDown("Jump"))) return;
-                GameObject.Find("AutoFade").GetComponent<LoadLevel>().enabled = true;
+                GameObject.Find("AutoFadeLoad").GetComponent<LoadLevel>().enabled = true;
                 break;         
         }
 
